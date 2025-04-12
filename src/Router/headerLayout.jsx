@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import ThemeSettings from '../InitialPage/themeSettings';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -8,7 +8,7 @@ import TwoColumnSidebar from '../InitialPage/Sidebar/two-column';
 import HorizontalSidebar from '../InitialPage/Sidebar/horizontalSidebar';
 
 const HeaderLayouts = () => {
-  const [showLoader, setShowLoader] = useState(true);
+  // const [showLoader, setShowLoader] = useState(true);
   const location = useLocation()
   const data = useSelector((state) => state.rootReducer.toggle_header);
   const dataWidth = useSelector((state) => state.themeSetting.dataWidth);
@@ -20,11 +20,11 @@ const HeaderLayouts = () => {
 
   useEffect(() => {
       // Show the loader when navigating to a new route
-      setShowLoader(true);
+      // setShowLoader(true);
 
       // Hide the loader after 2 seconds
       const timeoutId = setTimeout(() => {
-        setShowLoader(false);
+        // setShowLoader(false);
       }, 2000);
 
       window.scrollTo(0, 0);
@@ -33,13 +33,13 @@ const HeaderLayouts = () => {
       };
     
   }, [location.pathname]);
-  const Preloader = () => {
-    return (
-      <div id="global-loader">
-        <div className="whirly-loader"> </div>
-      </div>
-    );
-  };
+  // const Preloader = () => {
+  //   return (
+  //     <div id="global-loader">
+  //       <div className="whirly-loader"> </div>
+  //     </div>
+  //   );
+  // };
 
 
   return (
@@ -64,7 +64,7 @@ const HeaderLayouts = () => {
      `}>
         <>
             <>
-              {showLoader && <Preloader />}
+              {/* {showLoader && <Preloader />} */}
               <div className={`main-wrapper ${data ? "header-collapse" : ""}`}>
                 {/* <Loader /> */}
                 <Header />

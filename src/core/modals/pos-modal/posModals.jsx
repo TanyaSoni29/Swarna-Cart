@@ -147,7 +147,7 @@ const PosModals = () => {
             </Link>
           </div>
           <div className="text-center info text-center">
-            <h6>Dreamguys Technologies Pvt Ltd.,</h6>
+            <h6>Backend Coders Technologies Pvt Ltd.,</h6>
             <p className="mb-0">Phone Number: +1 5656665656</p>
             <p className="mb-0">
               Email: <Link to="mailto:example@gmail.com">example@gmail.com</Link>

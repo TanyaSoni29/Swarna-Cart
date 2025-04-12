@@ -8,38 +8,19 @@ import {
 	handlePostReq,
 	handlePutReq,
 } from '../apiRequestHandler';
-import { categoriesEndpoints } from '../apis';
+import { couponsEndpoints } from '../apis';
 
 const {
-	GET_CATEGORIES,
-	CREATE_CATEGORIES,
-	GET_CATEGORIES_BY_ID,
-	UPDATE_CATEGORIES,
-	DELETE_CATEGORIES,
-} = categoriesEndpoints;
+	GET_COUPONS,
+	CREATE_COUPONS,
+	GET_COUPONS_BY_ID,
+	UPDATE_COUPONS,
+	DELETE_COUPONS,
+} = couponsEndpoints;
 
-export async function getAllCategories() {
-	const response = await handleGetReq(GET_CATEGORIES);
-	console.log('get all categories response ---', response);
-
-	if (response.status === 'success') {
-		// sendLogs(
-		// 	{
-		// 		url: GET_LOCAL_POI2,
-		// 		reqBody: searchTerm,
-		// 		headers: setHeaders(),
-		// 		response: response,
-		// 	},
-		// 	'info'
-		// );
-		return response;
-	}
-	return null;
-}
-
-export async function getCategoriesById(id) {
-	const response = await handleGetReq(GET_CATEGORIES_BY_ID(id));
-	console.log('get categories by id response ---', response);
+export async function getAllCoupons() {
+	const response = await handleGetReq(GET_COUPONS);
+	console.log('get all coupons response ---', response);
 
 	if (response.status === 'success') {
 		// sendLogs(
@@ -56,9 +37,28 @@ export async function getCategoriesById(id) {
 	return null;
 }
 
-export async function createCategories(data) {
-	const response = await handlePostReq(CREATE_CATEGORIES, data);
-	console.log('create categories response ---', response);
+export async function getCouponsById(id) {
+	const response = await handleGetReq(GET_COUPONS_BY_ID(id));
+	console.log('get coupons by id response ---', response);
+
+	if (response.status === 'success') {
+		// sendLogs(
+		// 	{
+		// 		url: GET_LOCAL_POI2,
+		// 		reqBody: searchTerm,
+		// 		headers: setHeaders(),
+		// 		response: response,
+		// 	},
+		// 	'info'
+		// );
+		return response;
+	}
+	return null;
+}
+
+export async function createCoupons(data) {
+	const response = await handlePostReq(CREATE_COUPONS, data);
+	console.log('create coupons response ---', response);
 
 	if (response.status === 'success') {
 		// sendLogs(
@@ -70,15 +70,15 @@ export async function createCategories(data) {
 		// 	},
 		// 	'info'
 		// );
-		toast.success('Category Created Successfully');
+		toast.success('Coupon Created Successfully');
 		return response;
 	}
 	return null;
 }
 
-export async function updateCategories(id, data) {
-	const response = await handlePutReq(UPDATE_CATEGORIES(id), data);
-	console.log('update categories response ---', response);
+export async function updateCoupons(id, data) {
+	const response = await handlePutReq(UPDATE_COUPONS(id), data);
+	console.log('update coupons response ---', response);
 
 	if (response.status === 'success') {
 		// sendLogs(
@@ -90,15 +90,15 @@ export async function updateCategories(id, data) {
 		// 	},
 		// 	'info'
 		// );
-		toast.success('Category Updated Successfully');
+		toast.success('Coupon Updated Successfully');
 		return response;
 	}
 	return null;
 }
 
-export async function deleteCategories(id) {
-	const response = await handleDeleteReq(DELETE_CATEGORIES(id));
-	console.log('delete category response ---', response);
+export async function deleteCoupons(id) {
+	const response = await handleDeleteReq(DELETE_COUPONS(id));
+	console.log('delete coupons response ---', response);
 	if (response.status === 'success') {
 		// sendLogs(
 		// 	{
@@ -109,7 +109,7 @@ export async function deleteCategories(id) {
 		// 	},
 		// 	'info'
 		// );
-		toast.success('Category Deleted Successfully');
+		toast.success('Coupon Deleted Successfully');
 		return response;
 	}
 	return false;

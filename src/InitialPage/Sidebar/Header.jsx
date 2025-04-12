@@ -1,14 +1,19 @@
 /* eslint-disable */
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 import ImageWithBasePath from "../../core/img/imagewithbasebath";
 import { Search } from "react-feather";
 import { all_routes } from "../../Router/all_routes";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "../../core/redux/services/operations/authApi";
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth);
   const route = all_routes;
   const [toggle, SetToggle] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -30,6 +35,8 @@ const Header = () => {
   const isElementVisible = (element) => {
     return element.offsetWidth > 0 || element.offsetHeight > 0;
   };
+
+  // console.log("user", user)
 
   useEffect(() => {
     const handleMouseover = (e) => {
@@ -656,7 +663,7 @@ const Header = () => {
                 <span className="user-info p-0">
                   <span className="user-letter">
                     <ImageWithBasePath
-                      src="assets/img/profiles/avator1.jpg"
+                      src="assets/img/profiles/avatar-25.jpg"
                       alt="Img"
                       className="img-fluid"
                     />
@@ -666,11 +673,11 @@ const Header = () => {
               <div className="dropdown-menu menu-drop-user">
                 <div className="profileset d-flex align-items-center">
                   <span className="user-img me-2">
-                    <ImageWithBasePath src="assets/img/profiles/avator1.jpg" alt="Img" />
+                    <ImageWithBasePath src="assets/img/profiles/avatar-25.jpg" alt="Img" />
                   </span>
                   <div>
-                    <h6 className="fw-medium">John Smilga</h6>
-                    <p>Admin</p>
+                    <h6 className="fw-medium">{user?.fullname || "Username"}</h6>
+                    <p>{user?.role}</p>
                   </div>
                 </div>
                 <Link className="dropdown-item" to={route.profile}>
@@ -686,10 +693,10 @@ const Header = () => {
                   Settings
                 </Link>
                 <hr className="my-2" />
-                <Link className="dropdown-item logout pb-0" to={route.signin}>
+                <button className="dropdown-item logout pb-0" onClick={() => dispatch(logout(navigate))}>
                   <i className="ti ti-logout me-2" />
                   Logout
-                </Link>
+                </button>
               </div>
             </li>
 
@@ -712,9 +719,9 @@ const Header = () => {
               <Link className="dropdown-item" to="generalsettings">
                 Settings
               </Link>
-              <Link className="dropdown-item" to="signin">
+              <button className="dropdown-item" onClick={() => dispatch(logout(navigate))}>
                 Logout
-              </Link>
+              </button>
             </div>
           </div>
           {/* /Mobile Menu */}

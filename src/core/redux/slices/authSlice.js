@@ -6,7 +6,9 @@ const initialState = {
 	loading: false,
 	token: localStorage?.getItem('token') ? localStorage?.getItem('token') : null,
 	isAuth: localStorage?.getItem('token') ? true : false,
-	user: localStorage?.getItem('user') ? localStorage?.getItem('user') : null,
+	user: localStorage?.getItem('user')
+		? JSON.parse(localStorage?.getItem('user'))
+		: null,
 };
 
 const authSlice = createSlice({

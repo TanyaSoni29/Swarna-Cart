@@ -4,7 +4,7 @@ import axios from 'axios';
 // import { sendLogs } from '../utils/getLogs';
 
 export function setHeaders() {
-	const accessToken = localStorage.getItem('authToken');
+	const accessToken = localStorage.getItem('token');
 	if (!accessToken) return {};
 	return {
 		'accept': '*/*',

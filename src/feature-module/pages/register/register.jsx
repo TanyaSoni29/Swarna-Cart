@@ -1,13 +1,37 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageWithBasePath from '../../../core/img/imagewithbasebath';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { all_routes } from '../../../Router/all_routes';
 import { GoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import {
+	externalLogin,
+	registerUser,
+} from '../../../core/redux/services/operations/authApi';
+import { useForm } from 'react-hook-form';
+import Select from 'react-select';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+	const status = [
+		{ value: 0, label: 'Choose' },
+		{ value: 1, label: 'Admin' },
+		{ value: 2, label: 'User' },
+		{ value: 3, label: 'Dealer' },
+	];
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		setValue,
+		getValues,
+		trigger,
+		formState: { errors, isSubmitSuccessful },
+	} = useForm();
 	const [passwordVisibility, setPasswordVisibility] = useState({
 		password: false,
 		confirmPassword: false,
@@ -21,6 +45,43 @@ const Register = () => {
 	};
 
 	const route = all_routes;
+
+	const handleSubmitForm = async (data) => {
+		if (data.password !== data.confirmPassword) {
+			toast.error('Password and Confirm Password do not match');
+			return;
+		}
+		console.log('Form Data:', data);
+		try {
+			const newData = {
+				username: data.username,
+				password: data.password,
+				email: data.email,
+				userRole: getValues('userRole').value,
+			};
+			dispatch(registerUser(newData, navigate));
+		} catch (error) {
+			console.error(error);
+		} finally {
+			reset();
+		}
+	};
+	useEffect(() => {
+		register('userRole', {
+			required: 'User Role is required',
+		});
+	}, [register]);
+
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+			reset({
+				username: '',
+				password: '',
+				confirmPassword: '',
+				email: '',
+			});
+		}
+	}, [reset, isSubmitSuccessful]);
 	return (
 		<>
 			{/* Main Wrapper */}
@@ -28,7 +89,7 @@ const Register = () => {
 				<div className='account-content'>
 					<div className='login-wrapper register-wrap bg-img'>
 						<div className='login-content authent-content'>
-							<form>
+							<form onSubmit={handleSubmit(handleSubmitForm)}>
 								<div className='login-userset'>
 									<div className='login-logo logo-normal'>
 										<ImageWithBasePath
@@ -49,16 +110,25 @@ const Register = () => {
 										<h3>Register</h3>
 										<h4>Create New Swarna Account</h4>
 									</div>
+
 									<div className='mb-3'>
 										<label className='form-label'>
-											Name <span className='text-danger'> *</span>
+											Username <span className='text-danger'> *</span>
 										</label>
 										<div className='input-group'>
 											<input
 												type='text'
 												defaultValue=''
 												className='form-control border-end-0'
+												{...register('username', {
+													required: 'User name is required',
+												})}
 											/>
+											{errors.username && (
+												<span className='text-danger'>
+													{errors.username.message}
+												</span>
+											)}
 											<span className='input-group-text border-start-0'>
 												<i className='ti ti-user' />
 											</span>
@@ -73,7 +143,15 @@ const Register = () => {
 												type='text'
 												defaultValue=''
 												className='form-control border-end-0'
+												{...register('email', {
+													required: 'Email is required',
+												})}
 											/>
+											{errors.email && (
+												<span className='text-danger'>
+													{errors.email.message}
+												</span>
+											)}
 											<span className='input-group-text border-start-0'>
 												<i className='ti ti-mail' />
 											</span>
@@ -85,14 +163,22 @@ const Register = () => {
 										</label>
 										<div className='pass-group'>
 											<input
-												type={passwordVisibility ? 'text' : 'password'}
+												type={passwordVisibility.password ? 'text' : 'password'}
 												className='pass-input form-control'
+												{...register('password', {
+													required: 'Password is required',
+												})}
 											/>
+											{errors.password && (
+												<span className='text-danger'>
+													{errors.password.message}
+												</span>
+											)}
 											<span
 												className={`ti toggle-password ${
-													passwordVisibility ? 'ti-eye' : 'ti-eye-off'
+													passwordVisibility.password ? 'ti-eye' : 'ti-eye-off'
 												}`}
-												onClick={togglePasswordVisibility}
+												onClick={() => togglePasswordVisibility('password')}
 											></span>
 										</div>
 									</div>
@@ -108,18 +194,45 @@ const Register = () => {
 														: 'password'
 												}
 												className='pass-input form-control'
+												{...register('confirmPassword', {
+													required: 'Confirm Password is required',
+												})}
 											/>
+											{errors.confirmPassword && (
+												<span className='text-danger'>
+													{errors.confirmPassword.message}
+												</span>
+											)}
 											<span
 												className={`ti toggle-password ${
 													passwordVisibility.confirmPassword
 														? 'ti-eye'
-														: 'ti-eye-slash'
+														: 'ti-eye-off'
 												}`}
 												onClick={() =>
 													togglePasswordVisibility('confirmPassword')
 												}
 											></span>
 										</div>
+									</div>
+									<div className='mb-3'>
+										<label className='form-label'>
+											Role <span className='text-danger'> *</span>
+										</label>
+										<Select
+											classNamePrefix='react-select'
+											options={status}
+											placeholder='Choose Role'
+											onChange={(selectedOption) => {
+												setValue('userRole', selectedOption);
+												trigger('userRole'); // optional: triggers validation
+											}}
+										/>
+										{errors.userRole && (
+											<span className='text-danger'>
+												{errors.userRole.message}
+											</span>
+										)}
 									</div>
 									<div className='form-login authentication-check'>
 										<div className='row'>
@@ -142,13 +255,14 @@ const Register = () => {
 										</div>
 									</div>
 									<div className='form-login'>
-										<Link
-											to={route.signin}
+										<button
+											type='submit'
 											className='btn btn-login'
 										>
 											Sign Up
-										</Link>
+										</button>
 									</div>
+
 									<div className='signinform'>
 										<h4>
 											Already have an account ?{' '}
@@ -192,19 +306,11 @@ const Register = () => {
 													onSuccess={async (credentialResponse) => {
 														try {
 															console.log('Google Token:', credentialResponse);
-															const res = await axios.post(
-																'https://192.168.1.27:889/api/Authenticate/externallogin',
-																{
-																	provider: 'Google',
-																	idToken: credentialResponse.credential,
-																},
-																{
-																	headers: {
-																		'Content-Type': 'application/json',
-																	},
-																}
-															);
-															console.log('Login success:', res.data);
+															const reqData = {
+																provider: 'Google',
+																idToken: credentialResponse.credential,
+															};
+															dispatch(externalLogin(reqData, navigate));
 														} catch (err) {
 															console.error(err);
 														}

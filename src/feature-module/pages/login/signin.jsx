@@ -1,23 +1,55 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageWithBasePath from '../../../core/img/imagewithbasebath';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { all_routes } from '../../../Router/all_routes';
-import { useSelector } from 'react-redux';
 import { GoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import {
+	externalLogin,
+	login,
+} from '../../../core/redux/services/operations/authApi';
+import { useForm } from 'react-hook-form';
 
 const Signin = () => {
-	const { user } = useSelector((state) => state.auth);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors, isSubmitSuccessful },
+	} = useForm();
 	const [isPasswordVisible, setPasswordVisible] = useState(false);
-
-	console.log('can i integrate my Slice here', user);
 
 	const togglePasswordVisibility = () => {
 		setPasswordVisible((prevState) => !prevState);
 	};
 	const route = all_routes;
+
+	const handleSubmitForm = async (data) => {
+		try {
+			const newData = {
+				username: data.username,
+				password: data.password,
+			};
+			dispatch(login(newData, navigate));
+		} catch (error) {
+			console.error(error);
+		} finally {
+			reset();
+		}
+	};
+
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+			reset({
+				username: '',
+				password: '',
+			});
+		}
+	}, [reset, isSubmitSuccessful]);
 
 	return (
 		<>
@@ -26,7 +58,7 @@ const Signin = () => {
 				<div className='account-content'>
 					<div className='login-wrapper bg-img'>
 						<div className='login-content authent-content'>
-							<form>
+							<form onSubmit={handleSubmit(handleSubmitForm)}>
 								<div className='login-userset'>
 									<div className='login-logo logo-normal'>
 										<ImageWithBasePath
@@ -49,18 +81,27 @@ const Signin = () => {
 											Access the Swarna panel using your email and passcode.
 										</h4>
 									</div>
+
 									<div className='mb-3'>
 										<label className='form-label'>
-											Email <span className='text-danger'> *</span>
+											Username <span className='text-danger'> *</span>
 										</label>
 										<div className='input-group'>
 											<input
 												type='text'
 												defaultValue=''
 												className='form-control border-end-0'
+												{...register('username', {
+													required: 'User name is required',
+												})}
 											/>
+											{errors.username && (
+												<span className='text-danger'>
+													{errors.username.message}
+												</span>
+											)}
 											<span className='input-group-text border-start-0'>
-												<i className='ti ti-mail' />
+												<i className='ti ti-user' />
 											</span>
 										</div>
 									</div>
@@ -72,7 +113,15 @@ const Signin = () => {
 											<input
 												type={isPasswordVisible ? 'text' : 'password'}
 												className='pass-input form-control'
+												{...register('password', {
+													required: 'Password is required',
+												})}
 											/>
+											{errors.password && (
+												<span className='text-danger'>
+													{errors.password.message}
+												</span>
+											)}
 											<span
 												className={`ti toggle-password ${
 													isPasswordVisible ? 'ti-eye' : 'ti-eye-off'
@@ -106,13 +155,14 @@ const Signin = () => {
 										</div>
 									</div>
 									<div className='form-login'>
-										<Link
-											to={route.newdashboard}
+										<button
+											type='submit'
 											className='btn btn-primary w-100'
 										>
 											Sign In
-										</Link>
+										</button>
 									</div>
+
 									<div className='signinform'>
 										<h4>
 											New on our platform?
@@ -147,19 +197,11 @@ const Signin = () => {
 													onSuccess={async (credentialResponse) => {
 														try {
 															console.log('Google Token:', credentialResponse);
-															const res = await axios.post(
-																'https://192.168.1.27:889/api/Authenticate/externallogin',
-																{
-																	provider: 'Google',
-																	idToken: credentialResponse.credential,
-																},
-																{
-																	headers: {
-																		'Content-Type': 'application/json',
-																	},
-																}
-															);
-															console.log('Login success:', res.data);
+															const reqData = {
+																provider: 'Google',
+																idToken: credentialResponse.credential,
+															};
+															dispatch(externalLogin(reqData, navigate));
 														} catch (err) {
 															console.error(err);
 														}

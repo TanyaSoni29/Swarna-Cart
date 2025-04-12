@@ -22,7 +22,7 @@ const {
 	EXTERNAL_LOGIN,
 } = authEndpoints;
 
-export function register(data, navigate) {
+export function registerUser(data, navigate) {
 	return async (dispatch) => {
 		dispatch(setLoading(true));
 		const response = await handlePostReq(REGISTER, data);

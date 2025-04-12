@@ -1,0 +1,99 @@
+.badge {
+    &.badge-primary {
+        background: rgba($primary, 0.1);
+        box-shadow: 0 1px 1px rgba($primary, 0.5);
+        color: $primary;
+        
+    }
+}
+@each $color, $value in $theme-colors {
+    .badge {
+        &.badge-#{$color} {
+            background: #{$value};
+            box-shadow: 0 1px 1px rgba($value, 0.5);
+            color: $white;
+        }
+        &.badge-soft-#{$color} {
+            background: rgba($value, 0.1);
+            box-shadow: 0 1px 1px rgba($value, 0.5);
+            color: $value;
+        }
+        &.badge-soft-primary {
+            background: $primary-100 !important;
+        }
+        &.badge-soft-secondary {
+            background: $secondary-transparent !important;
+        }
+        &.badge-soft-success {
+            background: $success-100 !important;
+        }
+        &.badge-soft-warning {
+            background: $warning-100 !important;
+        }
+        &.badge-soft-danger {
+            background: $danger-100 !important;
+        }
+        &.badge-soft-info {
+            background: $info-transparent !important;
+        }
+        &.badge-soft-cyan {
+            background: $cyan-100 !important;
+        }
+        &.badge-soft-pink {
+            background: $pink-100 !important;
+        }
+        &.badge-soft-skyblue {
+            background: $purple-100 !important;
+        }
+    }
+}
+.badge{
+    padding: .35rem .45rem;
+    text-transform:capitalize;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.5px;
+    border-radius: $border-radius-lg;
+    &.badge-xs {
+        font-size: 10px;
+        padding: 0px 5px;
+        line-height: 18px;
+    }
+    &.badge-sm {
+        font-size: 11px;
+        padding: 5px 8px;
+        line-height: 11px;
+    }
+    &.badge-md {
+        font-size: 12px;
+        padding: 5px 12px;
+        line-height: 1.5;
+    }
+    &.badge-lg {
+        font-size: $font-size-14;
+        padding: 0px 10px;
+        line-height: 30px;
+    }
+    &.badge-xl {
+        font-size: $font-size-16;
+        padding: 0px 15px;
+        line-height: 35px;
+    }
+}
+.badges-warning {
+    color: $warning;
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: 1px solid $warning;
+    font-size: $font-size-14;
+    font-weight: $font-weight-semibold;
+    min-width: 80px;
+}
+.badge.badge-linedangered{
+    color: $danger;
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: 1px solid $danger;
+    font-size: $font-size-14;
+    font-weight: $font-weight-semibold;
+    min-width: 80px;
+}

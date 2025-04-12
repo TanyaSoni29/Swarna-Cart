@@ -1,0 +1,117 @@
+// wishlist style
+
+.wishlist-products {    
+    .qty-item {
+        position: relative;
+        display: inline-block;
+        margin-right: 7px;
+        input {
+            padding: 1px 9px;   
+            @include rounded(8px);
+            height: 28px;
+            width: 71px;
+            text-align: center;
+            font-size: $font-size-base;
+        }
+        .dec, .inc {
+            position: absolute;
+            top: 50%;
+            @include transform(translateY(-50%));
+            color: $secondary;
+            @include transition(all 0.5s ease);
+            &:hover {
+                color: $primary;
+            }
+        }
+        .dec {
+            left: 9px;
+        }
+        .inc {
+            right: 9px;
+        }
+    }
+    .product-info {
+        padding: 15px;
+        color:  $sub-title;
+        border: 1px solid #E6EAED;
+        @include transition(all 0.5s ease);
+        .img-bg {
+            background-color: $light;
+            @include rounded(10px);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            justify-content: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            margin-bottom: 10px;
+            position: relative;
+            padding: 10px;
+            img {
+                @include transition(all 0.5s ease);
+            }
+            span {
+                @include transition(all 0.5s ease);
+                background: $pink;
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                @include rounded(100%);
+                color: $success;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                align-items: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                justify-content: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                display: none;
+                font-size: $font-size-18;
+                &:hover {
+                    background: $secondary;
+                }
+            }
+        }
+        h6 {
+            font-weight: $font-weight-bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            &.cat-name {
+                margin-bottom: 4px;
+                font-weight: $font-weight-normal;
+                a {
+                    color: $gray-600;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+        .price {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed $border-color;
+            span {
+                color:  $pink;
+            }
+            p {
+                color: $teal;
+                font-weight: $font-weight-bold;
+            }
+
+        }
+        &:hover{
+            .img-bg {
+                img {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}

@@ -19,26 +19,6 @@ const Signin = () => {
 	};
 	const route = all_routes;
 
-	// const login = GoogleLogin({
-	// 	onSuccess: async (credentialResponse) => {
-	// 		try {
-	// 			console.log('Google Token:', credentialResponse);
-	// 			const res = await axios.post(
-	// 				'https://192.168.1.27:889/api/Authenticate/externallogin',
-	// 				{
-	// 					provider: 'Google',
-	// 					idToken: credentialResponse.credential,
-	// 				},
-	// 				{ headers: { 'Content-Type': 'application/json' } }
-	// 			);
-	// 			console.log('Login success:', res.data);
-	// 		} catch (err) {
-	// 			console.error(err);
-	// 		}
-	// 	},
-	// 	onError: () => console.log('Google login failed'),
-	// });
-
 	return (
 		<>
 			{/* Main Wrapper */}
@@ -66,7 +46,7 @@ const Signin = () => {
 									<div className='login-userheading'>
 										<h3>Sign In</h3>
 										<h4 className='fs-16'>
-											Access the Dreamspos panel using your email and passcode.
+											Access the Swarna panel using your email and passcode.
 										</h4>
 									</div>
 									<div className='mb-3'>
@@ -216,7 +196,7 @@ const Signin = () => {
 										</div>
 									</div>
 									<div className='my-4 d-flex justify-content-center align-items-center copyright-text'>
-										<p>Copyright © 2025 DreamsPOS</p>
+										<p>Copyright © 2025 Swarna Cart</p>
 									</div>
 								</div>
 							</form>

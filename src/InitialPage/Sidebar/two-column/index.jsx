@@ -727,7 +727,7 @@ const TwoColumnSidebar = () => {
 											<span>Notifications & Reminders</span>
 										</li>
 										<li>
-											<Link to={route.notification}>
+											<Link to={route.activities}>
 												<span>Notifications</span>
 											</Link>
 										</li>

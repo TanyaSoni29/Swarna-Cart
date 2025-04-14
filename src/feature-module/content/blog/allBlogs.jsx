@@ -789,12 +789,12 @@ const AllBlogs = () => {
         </div>
         <div className="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
           <p className="mb-0 text-gray-9">
-            2014 - 2025 © DreamsPOS. All Right Reserved
+            2025 © Swarna. All Right Reserved
           </p>
           <p>
             Designed &amp; Developed by{" "}
             <a href="javascript:void(0);" className="text-primary">
-              Dreams
+              Backend Coders
             </a>
           </p>
         </div>

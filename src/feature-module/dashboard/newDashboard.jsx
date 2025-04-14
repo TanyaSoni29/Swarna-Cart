@@ -2410,12 +2410,12 @@ const NewDashboard = () => {
             </div>
             <div className="copyright-footer d-flex align-items-center justify-content-between border-top bg-white gap-3 flex-wrap">
                 <p className="fs-13 text-gray-9 mb-0">
-                    2014-2025 © DreamsPOS. All Right Reserved
+                    2025 © Swarna. All Right Reserved
                 </p>
                 <p>
-                    Designed &amp; Developed By Dreams{" "}
+                    Designed &amp; Developed By{" "}
                     <Link to="#" className="link-primary">
-                        Dreams
+                        Backend Coders
                     </Link>
                 </p>
             </div>

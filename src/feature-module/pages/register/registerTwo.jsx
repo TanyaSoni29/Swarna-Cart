@@ -35,7 +35,7 @@ const RegisterTwo = () => {
                     </Link>
                     <div className="login-userheading">
                       <h3>Register</h3>
-                      <h4>Create New Dreamspos Account</h4>
+                      <h4>Create New Swarna Account</h4>
                     </div>
                     <div className="mb-3">
                       <label className="form-label">
@@ -179,7 +179,7 @@ const RegisterTwo = () => {
                       </div>
                     </div>
                     <div className="my-4 d-flex justify-content-center align-items-center copyright-text">
-                      <p>Copyright © 2025 DreamsPOS</p>
+                      <p>Copyright © 2025 Swarna</p>
                     </div>
                   </div>
                 </form>

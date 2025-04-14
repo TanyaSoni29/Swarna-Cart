@@ -17,7 +17,7 @@ export async function handleGetReq(URL) {
 	try {
 		// console.log(URL);
 		const response = await axios.get(URL, { headers: setHeaders() });
-		if (response.status >= 200 && response.status < 300) {
+		if (response?.status >= 200 && response?.status < 300) {
 			return { ...response.data, status: 'success' };
 		} else {
 			console.log('Unexpected response status:', response);
@@ -28,9 +28,9 @@ export async function handleGetReq(URL) {
 		console.error('Error in GET request:', err);
 		return {
 			...err.response,
-			status: err.response.status > 499 ? 'error' : 'fail',
+			status: err.response?.status > 499 ? 'error' : 'fail',
 			message: `${
-				err.response.status > 499 ? 'server error' : 'Failed'
+				err.response?.status > 499 ? 'server error' : 'Failed'
 			} while fetching the data`,
 		};
 	}
@@ -42,7 +42,7 @@ export async function handlePostReq(URL, data) {
 			headers: setHeaders(),
 		});
 
-		if (response.status >= 200 && response.status < 300) {
+		if (response?.status >= 200 && response?.status < 300) {
 			return { ...response.data, status: 'success' };
 		} else {
 			console.log('Unexpected response status:', response);
@@ -52,9 +52,9 @@ export async function handlePostReq(URL, data) {
 		// sendLogs({ url: URL, error: err.response }, 'error');
 		return {
 			...err.response,
-			status: err.response.status > 499 ? 'error' : 'fail',
+			status: err.response?.status > 499 ? 'error' : 'fail',
 			message: `${
-				err.response.status > 499 ? 'server error' : 'Failed'
+				err.response?.status > 499 ? 'server error' : 'Failed'
 			} while fetching the data`,
 		};
 	}
@@ -66,7 +66,7 @@ export async function handlePutReq(URL, data) {
 			headers: setHeaders(),
 		});
 
-		if (response.status >= 200 && response.status < 300) {
+		if (response?.status >= 200 && response?.status < 300) {
 			return { ...response.data, status: 'success' };
 		} else {
 			console.log('Unexpected response status:', response);
@@ -76,9 +76,9 @@ export async function handlePutReq(URL, data) {
 		// sendLogs({ url: URL, error: err.response }, 'error');
 		return {
 			...err.response,
-			status: err.response.status > 499 ? 'error' : 'fail',
+			status: err.response?.status > 499 ? 'error' : 'fail',
 			message: `${
-				err.response.status > 499 ? 'server error' : 'Failed'
+				err.response?.status > 499 ? 'server error' : 'Failed'
 			} while fetching the data`,
 		};
 	}
@@ -88,7 +88,7 @@ export async function handleDeleteReq(URL) {
 	try {
 		// console.log(URL);
 		const response = await axios.delete(URL, { headers: setHeaders() });
-		if (response.status >= 200 && response.status < 300) {
+		if (response?.status >= 200 && response?.status < 300) {
 			return { ...response.data, status: 'success' };
 		} else {
 			console.log('Unexpected response status:', response);
@@ -99,9 +99,9 @@ export async function handleDeleteReq(URL) {
 		console.error('Error in GET request:', err);
 		return {
 			...err.response,
-			status: err.response.status > 499 ? 'error' : 'fail',
+			status: err.response?.status > 499 ? 'error' : 'fail',
 			message: `${
-				err.response.status > 499 ? 'server error' : 'Failed'
+				err.response?.status > 499 ? 'server error' : 'Failed'
 			} while fetching the data`,
 		};
 	}

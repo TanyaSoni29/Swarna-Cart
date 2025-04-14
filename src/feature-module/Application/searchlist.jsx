@@ -80,10 +80,10 @@ const Searchlist = () => {
 											{/* <Link to="#" className="text-info text-truncate mb-2">
                                                 https://themeforest.net/search/dreamspos
                                             </Link> */}
-											{/* <p className="text-truncate line-clamb-2 mb-2">
-                                                DreamsPOS - Html, Vue 3, Angular 17+, React &amp; Node HR
-                                                Project Management &amp; CRM Admin Dashboard Template
-                                            </p> */}
+											<p className='text-truncate line-clamb-2 mb-2'>
+												BAckend Coders India - Html, Tailwind, React &amp; Node
+												HR Project Management &amp; CRM Admin Dashboard Template
+											</p>
 											<div className='d-flex align-items-center flex-wrap row-gap-2'>
 												<span className='text-gray-9 me-3 pe-3 border-end'>
 													1.7K Sales

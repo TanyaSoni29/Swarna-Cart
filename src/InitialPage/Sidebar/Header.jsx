@@ -351,7 +351,7 @@ const Header = () => {
                   />
                   Grocery Apex
                 </Link>
-                <Link to="#" className="dropdown-item">
+                {/* <Link to="#" className="dropdown-item">
                   <ImageWithBasePath
                     src="assets/img/store/store-03.png"
                     alt="Store Logo"
@@ -366,7 +366,7 @@ const Header = () => {
                     className="img-fluid"
                   />
                   Grocery Eden
-                </Link>
+                </Link> */}
               </div>
             </li>
             {/* /Select Store */}
@@ -542,13 +542,13 @@ const Header = () => {
                 <i className="ti ti-maximize"></i>
               </Link>
             </li>
-            <li className="nav-item nav-item-box">
+            {/* <li className="nav-item nav-item-box">
               <Link to="/email">
-                {/* <i data-feather="mail" /> */}
+                <i data-feather="mail" />
                 <i className="ti ti-mail"></i>
                 <span className="badge rounded-pill">1</span>
               </Link>
-            </li>
+            </li> */}
             {/* Notifications */}
             <li className="nav-item dropdown nav-item-box">
               <Link

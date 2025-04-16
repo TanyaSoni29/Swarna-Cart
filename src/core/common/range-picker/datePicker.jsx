@@ -16,7 +16,7 @@ const PredefinedDateRanges = () => {
   };
 
   // Format to "MM/DD/YYYY"
-  const label = `${start.format('MM/DD/YYYY')} - ${end.format('MM/DD/YYYY')}`;
+  const label = `${start.format('DD/MM/YYYY')} - ${end.format('DD/MM/YYYY')}`;
 
   return (
     <DateRangePicker

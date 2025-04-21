@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 import ImageWithBasePath from "../../core/img/imagewithbasebath";
-import { Search } from "react-feather";
+// import { Search } from "react-feather";
 import { all_routes } from "../../Router/all_routes";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -32,6 +32,7 @@ const Header = () => {
             : 'assets/img/flags/de.png'
     );
   };
+
   const isElementVisible = (element) => {
     return element.offsetWidth > 0 || element.offsetHeight > 0;
   };
@@ -59,6 +60,7 @@ const Header = () => {
       document.removeEventListener("mouseover", handleMouseover);
     };
   }, []);
+
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(
@@ -90,6 +92,7 @@ const Header = () => {
       );
     };
   }, []);
+
   const handlesidebar = () => {
     document.body.classList.toggle("mini-sidebar");
     SetToggle((current) => !current);
@@ -107,6 +110,7 @@ const Header = () => {
     "/reactjs/template/dream-pos/index-three",
     "/reactjs/template/dream-pos/index-one",
   ];
+
   if (exclusionArray.indexOf(window.location.pathname) >= 0) {
     return "";
   }
@@ -140,6 +144,7 @@ const Header = () => {
       }
     }
   };
+  
   const { expandMenus } = useSelector(
     (state) => state.themeSetting.expandMenus
   );
@@ -207,7 +212,7 @@ const Header = () => {
           <ul className="nav user-menu">
             {/* Search */}
             <li className="nav-item nav-searchinputs">
-              <div className="top-nav-search">
+              {/* <div className="top-nav-search">
                 <Link to="#" className="responsive-search">
                   <Search />
                 </Link>
@@ -310,12 +315,12 @@ const Header = () => {
                     </div>
                   </div>
                 </form>
-              </div>
+              </div> */}
             </li>
             {/* /Search */}
 
             {/* Select Store */}
-            <li className="nav-item dropdown has-arrow main-drop select-store-dropdown">
+            {/* <li className="nav-item dropdown has-arrow main-drop select-store-dropdown">
               <Link
                 to="#"
                 className="dropdown-toggle nav-link select-store"
@@ -351,7 +356,7 @@ const Header = () => {
                   />
                   Grocery Apex
                 </Link>
-                {/* <Link to="#" className="dropdown-item">
+                <Link to="#" className="dropdown-item">
                   <ImageWithBasePath
                     src="assets/img/store/store-03.png"
                     alt="Store Logo"
@@ -366,12 +371,12 @@ const Header = () => {
                     className="img-fluid"
                   />
                   Grocery Eden
-                </Link> */}
+                </Link>
               </div>
-            </li>
+            </li> */}
             {/* /Select Store */}
 
-            <li className="nav-item dropdown link-nav">
+            <li className="nav-item dropdown link-nav pos-nav">
               <Link
                 to="#"
                 className="btn btn-primary btn-md d-inline-flex align-items-center"
@@ -481,7 +486,7 @@ const Header = () => {
                 </div>
               </div>
             </li>
-            <li className="nav-item pos-nav">
+            {/* <li className="nav-item pos-nav">
               <Link
                 to={route.pos}
                 className="btn btn-dark btn-md d-inline-flex align-items-center"
@@ -489,7 +494,7 @@ const Header = () => {
                 <i className="ti ti-device-laptop me-1" />
                 POS
               </Link>
-            </li>
+            </li> */}
 
 
 
@@ -648,12 +653,14 @@ const Header = () => {
 
             </li>
             {/* /Notifications */}
+
             <li className="nav-item nav-item-box">
               <Link to="/general-settings">
                 {/* <i data-feather="settings" /> */}
                 <i className="ti ti-settings"></i>
               </Link>
             </li>
+
             <li className="nav-item dropdown has-arrow main-drop profile-nav">
               <Link
                 to="#"

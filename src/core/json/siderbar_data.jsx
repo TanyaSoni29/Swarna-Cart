@@ -10,18 +10,20 @@ export const SidebarData = [
 		submenuOpen: true,
 		showSubRoute: false,
 		submenuHdr: 'Main',
+		roles: ['Admin', 'User', 'Dealer'],
 		submenuItems: [
 			{
 				label: 'Dashboard',
+				link: '/index',
 				icon: 'layout-grid',
-				submenu: true,
+				submenu: false,
 				showSubRoute: false,
-
-				submenuItems: [
-					{ label: 'Admin Dashboard', link: '/index' },
-					// { label: 'Admin Dashboard 2', link: '/admin-dashboard' },
-					// { label: 'Sales Dashboard', link: '/sales-dashboard' },
-				],
+				roles: ['Admin', 'User', 'Dealer'],
+				// submenuItems: [
+				// 	{ label: 'Admin Dashboard', link: '/index' },
+				// 	// { label: 'Admin Dashboard 2', link: '/admin-dashboard' },
+				// 	// { label: 'Sales Dashboard', link: '/sales-dashboard' },
+				// ],
 			},
 			// {
 			// 	label: 'Super Admin',
@@ -101,6 +103,7 @@ export const SidebarData = [
 		submenuOpen: true,
 		showSubRoute: false,
 		submenuHdr: 'Inventory',
+		roles: ['Admin', 'User', 'Dealer'],
 		submenuItems: [
 			{
 				label: 'Products',
@@ -108,6 +111,7 @@ export const SidebarData = [
 				icon: 'box',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			{
 				label: 'Create Product',
@@ -115,6 +119,7 @@ export const SidebarData = [
 				icon: 'table-plus',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			// {
 			// 	label: 'Expired Products',
@@ -136,6 +141,7 @@ export const SidebarData = [
 				icon: 'list-details',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			// {
 			// 	label: 'Sub Category',
@@ -280,6 +286,7 @@ export const SidebarData = [
 		submenuOpen: true,
 		submenuHdr: 'Promo',
 		showSubRoute: false,
+		roles: ['Admin', 'User', 'Dealer'],
 		submenuItems: [
 			{
 				label: 'Coupons',
@@ -287,6 +294,7 @@ export const SidebarData = [
 				icon: 'ticket',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			{
 				label: 'Gift Cards',
@@ -294,19 +302,27 @@ export const SidebarData = [
 				icon: 'cards',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			{
 				label: 'Discount',
 				icon: 'file-percent',
 				showSubRoute: false,
 				submenu: true,
+				roles: ['Admin', 'User', 'Dealer'],
 				submenuItems: [
 					{
 						label: 'Discount Plan',
 						link: route.discountPlan,
 						showSubRoute: false,
+						roles: ['Admin', 'User', 'Dealer'],
 					},
-					{ label: 'Discount', link: route.discount, showSubRoute: false },
+					{
+						label: 'Discount',
+						link: route.discount,
+						showSubRoute: false,
+						roles: ['Admin', 'User', 'Dealer'],
+					},
 				],
 			},
 		],
@@ -425,7 +441,7 @@ export const SidebarData = [
 		submenuOpen: true,
 		showSubRoute: false,
 		submenuHdr: 'People',
-
+		roles: ['Admin', 'User', 'Dealer'],
 		submenuItems: [
 			{
 				label: 'Customers',
@@ -433,6 +449,7 @@ export const SidebarData = [
 				icon: 'users-group',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			// {
 			// 	label: 'Billers',
@@ -447,6 +464,7 @@ export const SidebarData = [
 				icon: 'user-dollar',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			{
 				label: 'Stores',
@@ -454,6 +472,7 @@ export const SidebarData = [
 				icon: 'home-bolt',
 				showSubRoute: false,
 				submenu: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			// {
 			// 	label: 'Warehouses',
@@ -704,18 +723,21 @@ export const SidebarData = [
 		submenuOpen: true,
 		showSubRoute: false,
 		submenuHdr: 'User Management',
+		roles: ['Admin', 'User', 'Dealer'],
 		submenuItems: [
 			{
 				label: 'Users',
 				link: '/users',
 				icon: 'shield-up',
 				showSubRoute: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			{
 				label: 'Roles & Permissions',
 				link: '/roles-permissions',
 				icon: 'jump-rope',
 				showSubRoute: false,
+				roles: ['Admin', 'User', 'Dealer'],
 			},
 			// {
 			// 	label: 'Delete Account Request',

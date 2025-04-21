@@ -32,7 +32,10 @@ export function refreshCategories() {
 			const response = await getAllCategories();
 			console.log('refresh all categories response ---', response);
 			if (response.status === 'success') {
-				dispatch(setCategories(response.data));
+				const array = Object.keys(response)
+					.filter((key) => key !== 'status')
+					.map((key) => response[key]);
+				dispatch(setCategories(array));
 			}
 		} catch (error) {
 			console.error('Error refreshing categories:', error);

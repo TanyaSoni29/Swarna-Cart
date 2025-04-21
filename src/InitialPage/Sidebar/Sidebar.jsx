@@ -223,7 +223,7 @@ const Sidebar = () => {
 							<ul>
 								{SidebarData?.filter(
 									(mainLabel) =>
-										!mainLabel.roles || mainLabel.roles.includes(user.role) // Filter main labels by role
+										!mainLabel.roles || mainLabel.roles.includes(user?.role) // Filter main labels by role
 								).map((mainLabel, index) => (
 									<li
 										className='submenu-open'
@@ -234,7 +234,7 @@ const Sidebar = () => {
 											{mainLabel?.submenuItems
 												?.filter(
 													(item) =>
-														!item.roles || item.roles.includes(user.role) // Filter submenu items by role
+														!item.roles || item.roles.includes(user?.role) // Filter submenu items by role
 												)
 												.map((title, i) => {
 													let link_array = [];
@@ -290,7 +290,7 @@ const Sidebar = () => {
 																		?.filter(
 																			(item) =>
 																				!item.roles ||
-																				item.roles.includes(user.role) // Filter sub-submenu items by role
+																				item.roles.includes(user?.role) // Filter sub-submenu items by role
 																		)
 																		.map((item, titleIndex) => (
 																			<li
@@ -333,7 +333,7 @@ const Sidebar = () => {
 																							(subItem) =>
 																								!subItem.roles ||
 																								subItem.roles.includes(
-																									user.role
+																									user?.role
 																								) // Filter deepest level items
 																						)
 																						.map((items, subIndex) => (

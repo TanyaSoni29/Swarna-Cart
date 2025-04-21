@@ -11,7 +11,7 @@ import {
 	resetAllMode,
 	setDataColor,
 	setDataColorAll,
-	setDataLayout,
+	// setDataLayout,
 	setDataSidebar,
 	setDataSidebarAll,
 	setDataSidebarBg,
@@ -98,9 +98,9 @@ const ThemeSettings = () => {
 	}, [dispatch, rgbString, rgbString2, rgbString3, rgbString4]);
 
 	// Event handlers for dispatching actions
-	const handleLayoutChange = (layout) => {
-		dispatch(setDataLayout(layout));
-	};
+	// const handleLayoutChange = (layout) => {
+	// 	dispatch(setDataLayout(layout));
+	// };
 
 	const handleLayoutWidthChange = (layout) => {
 		dispatch(setDataWidth(layout));
@@ -194,7 +194,7 @@ const ThemeSettings = () => {
 							className='accordion accordion-customicon1 accordions-items-seperate'
 							id='settingtheme'
 						>
-							<div className='accordion-item border px-3 layout-select'>
+							{/* <div className='accordion-item border px-3 layout-select'>
 								<h2 className='accordion-header'>
 									<button
 										className='accordion-button text-dark bg-transparent fs-16 px-0 py-3'
@@ -343,7 +343,7 @@ const ThemeSettings = () => {
 													</label>
 												</div>
 											</div>
-											{/* <div className="col-4">
+											<div className="col-4">
                   <div className="theme-layout mb-3">
                     <input
                       type="radio"
@@ -360,8 +360,8 @@ const ThemeSettings = () => {
                       <span className="layout-type">Overlay</span>
                     </label>
                   </div>
-                </div> */}
-											{/* <div className='col-4'>
+                </div>
+											<div className='col-4'>
 												<Link
 													to={all_routes.RTL}
 													onClick={() => dispatch(setRtl('layout-mode-rtl'))}
@@ -375,11 +375,11 @@ const ThemeSettings = () => {
 													</span>
 													<span className='layout-type d-block'>RTL</span>
 												</Link>
-											</div> */}
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
 							<div className='accordion-item border px-3 layout-select'>
 								<h2 className='accordion-header'>
 									<button

@@ -94,7 +94,10 @@ const CategoryList = () => {
 							</div>
 						</div>
 						<ul className='table-top-head'>
-							<TooltipIcons />
+							<TooltipIcons
+								columns={columns}
+								dataSource={categories}
+							/>
 							<RefreshIcon />
 							<CollapesIcon />
 						</ul>
